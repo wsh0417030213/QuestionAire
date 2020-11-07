@@ -48,7 +48,7 @@ export default {
     },
     handleSubmit(e){
       var text = "";
-      text += "你是" + e[0].picked + "的\n";
+      text += "你是ssss" + e[0].picked + "的\n";
       text += "你喜欢" + e[1].picked.join("和") + "\n";
       text += "你说'" + e[2].text + "'\n";
       alert(text);
