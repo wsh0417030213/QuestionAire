@@ -68,6 +68,7 @@ export default {
     },
 
     handleSubmit: function () {
+      debugger;
       this.$emit('submit', this.questions);
     },
     handleNext: function () {
@@ -97,14 +98,14 @@ export default {
         default:
       }
     },
-    errMsg:function(flag){
-     
-      if(flag == true){
+    errMsg:function(totalText){
+     debugger
+      if(totalText.length >= 4){
         this.disabledSubmit = false;
       } else {
         this.disabledSubmit = true;
       }
-
+     
     },
     handlePick: function (arg) {
       var question = this.questions[this.page];

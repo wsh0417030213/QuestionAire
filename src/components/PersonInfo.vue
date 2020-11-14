@@ -47,7 +47,7 @@
       </select>
     </p>
     <p>
-      <button @click="checkForm">提交</button>
+      
     </p>
   </div>
 </template>
@@ -62,32 +62,20 @@ export default {
       user_email: null,
       user_like: null,
       flag: true,
+      totlaText: []
     };
   },
   methods: {
-    checkForm(e) {
-      var text = "";
-
-      text += "你是" + this.user_name + "\n";
-      text += "你年龄" + this.user_age + "\n";
-      text += "你邮箱'" + this.user_email + "'\n";
-      text += "你爱好'" + val + "'\n";
-      console.log(this.errMsg);
-
-      e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
-    },
+   
     checkName(e) {
+     
       this.errMsg = [];
       if (!this.user_name) {
         this.errMsg.push("用户姓名不能为空");
       }
      
-      if (!this.errMsg.length) {
-        this.flag = true;
-      } else {
-        this.flag = false;
-      }
-      this.$emit("reduce", this.flag);
+      this.totlaText.push(this.user_name )
+      this.$emit("reduce", this.totlaText);
       e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
     },
     checkAge(e) {
@@ -95,13 +83,9 @@ export default {
       if (!this.user_age) {
         this.errMsg.push("年龄格式输入错误");
       }
-     
-      if (!this.errMsg.length) {
-        this.flag = true;
-      } else {
-        this.flag = false;
-      }
-      this.$emit("reduce", this.flag);
+
+       this.totlaText.push(this.user_age )
+       this.$emit("reduce", this.totlaText);
       e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
     },
     checkMail(e) {
@@ -113,26 +97,18 @@ export default {
         this.errMsg.push("邮箱格式不正确");
       }
       
-      if (!this.errMsg.length) {
-        this.flag = true;
-      } else {
-        this.flag = false;
-      }
-      this.$emit("reduce", this.flag);
+      this.totlaText.push(this.user_email )
+      this.$emit("reduce", this.totlaText);
       e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
     },
     checkLike(e) {
       this.errMsg = [];
       var obj = document.getElementById("user_like");
       var index = obj.selectedIndex;
-      var val = obj.options[index].text;
+      var user_val = obj.options[index].text;
 
-      if (!val.length) {
-        this.flag = true;
-      } else {
-        this.flag = false;
-      }
-      this.$emit("reduce", this.flag);
+      this.totlaText.push(this.user_val )
+       this.$emit("reduce", this.totlaText);
       e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
     },
     checkEmail(email) {
