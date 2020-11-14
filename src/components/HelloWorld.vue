@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <QuestionNaire :questions="questions" @submit="handleSubmit" @showCityName="updateCity"></QuestionNaire>
   </div>
 </template>

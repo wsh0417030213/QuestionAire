@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img style="width: 20%" src="./assets/logo.png">
+    <h3>表单项目</h3>
     <router-view/>
   </div>
 </template>
