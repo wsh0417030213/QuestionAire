@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
     <div class="err_content" v-if="errMsg.length">
-      <b>错误提示：</b>
       <ul>
         <li v-for="(err, index) in errMsg" :key="index">{{ err }}</li>
       </ul>
@@ -40,15 +39,18 @@
     </p>
     <p>
       <label for="user_like">爱好：</label>
-      <select name="user_like" id="user_like" v-model="user_like" @change="checkLike">
+      <select
+        name="user_like"
+        id="user_like"
+        v-model="user_like"
+        @change="checkLike"
+      >
         <option value="0">看书</option>
         <option value="1">写代码</option>
         <option value="2">看代码</option>
       </select>
     </p>
-    <p>
-      
-    </p>
+    <p></p>
   </div>
 </template>
 
@@ -62,19 +64,17 @@ export default {
       user_email: null,
       user_like: null,
       flag: true,
-      totlaText: []
+      totlaText: [],
     };
   },
   methods: {
-   
     checkName(e) {
-     
       this.errMsg = [];
       if (!this.user_name) {
         this.errMsg.push("用户姓名不能为空");
       }
-     
-      this.totlaText.push(this.user_name )
+
+      this.totlaText.push(this.user_name);
       this.$emit("reduce", this.totlaText);
       e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
     },
@@ -84,20 +84,19 @@ export default {
         this.errMsg.push("年龄格式输入错误");
       }
 
-       this.totlaText.push(this.user_age )
-       this.$emit("reduce", this.totlaText);
+      this.totlaText.push(this.user_age);
+      this.$emit("reduce", this.totlaText);
       e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
     },
     checkMail(e) {
-      
       this.errMsg = [];
       if (!this.user_email) {
         this.errMsg.push("邮箱不能为空");
       } else if (!this.checkEmail(this.user_email)) {
         this.errMsg.push("邮箱格式不正确");
       }
-      
-      this.totlaText.push(this.user_email )
+
+      this.totlaText.push(this.user_email);
       this.$emit("reduce", this.totlaText);
       e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
     },
@@ -107,8 +106,8 @@ export default {
       var index = obj.selectedIndex;
       var user_val = obj.options[index].text;
 
-      this.totlaText.push(this.user_val )
-       this.$emit("reduce", this.totlaText);
+      this.totlaText.push(user_val);
+      this.$emit("reduce", this.totlaText);
       e.preventDefault(); // 通知浏览器不要执行与事件关联的默认动作
     },
     checkEmail(email) {

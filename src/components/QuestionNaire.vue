@@ -8,7 +8,7 @@
       <TypeText v-show="page === index" v-else-if="item.type=='typetext'" :name="'q' + (index + '')" :title="item.title" @pick="handlePick(arguments)"></TypeText>
       <PersonInfo v-show="page === index" v-else @reduce="errMsg"></PersonInfo>
     </div>
-
+<br><br><br>
     <MyButton v-show="page === count -1" :banned="disabledSubmit" @click="handleSubmit">提交</MyButton>
     <MyButton v-show="page < count -1" :banned="disabledNext" @click="handleNext">下一题</MyButton>
     <MyButton v-show="page > 0" :banned="false" @click="handlePrev">上一题</MyButton>
@@ -52,7 +52,8 @@ export default {
     return {
       page: 0,
       disabledSubmit: true,
-      disabledNext: true
+      disabledNext: true,
+      totalText:[]
     }
   },
   mounted: function () {
@@ -68,8 +69,9 @@ export default {
     },
 
     handleSubmit: function () {
-      debugger;
-      this.$emit('submit', this.questions);
+  
+      this.$emit('submit', this.questions, this.totalText);
+     
     },
     handleNext: function () {
       if (this.page < this.count - 1) {
@@ -99,13 +101,14 @@ export default {
       }
     },
     errMsg:function(totalText){
-     debugger
+     var flag = true;
       if(totalText.length >= 4){
-        this.disabledSubmit = false;
+        flag = false;
       } else {
-        this.disabledSubmit = true;
+        flag = true;
       }
-     
+     this.disabledSubmit = flag;
+     this.totalText = totalText;
     },
     handlePick: function (arg) {
       var question = this.questions[this.page];
