@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
 
-    <button class="mybutton" @click="handleClick" :disabled="banned"><slot></slot></button>
+    <button class="mybutton" @click="handleClick" :disabled="banned"><slot>ddd</slot></button>
 
   </div>
 </template>
