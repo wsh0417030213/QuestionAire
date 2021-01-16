@@ -4,7 +4,7 @@
       <span>{{ title }}</span>
       <div v-for="(choice, index) in choices">
         <input type="radio" v-model="curValue" :value="choices[index]" :id="values[index]">
-        <label :for="values[index]">ss{{ choice }}</label>
+        <label :for="values[index]">s66s{{ choice }}</label>
       </div>
     </div>
 
